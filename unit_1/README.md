@@ -40,7 +40,7 @@ DUEÑA KARINTOU → VENDE PRODUCTO → VENDEDOR → VENDE PRODUCTO → CLIENTE
 
 
 
-![Base de datos conceptual del negocio de galletas Karintou](../assets/img/diseñoconceptual.png)
+![Base de datos conceptual del negocio de galletas Karintou](../assets/img/diseñoconceptual.jpeg)
 
 
 
