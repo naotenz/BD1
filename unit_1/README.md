@@ -18,6 +18,8 @@ No utilizan recibos. Según la información proporcionada, si el negocio no supe
 
 Base de datos conceptual
 
+![Base de datos conceptual del negocio de galletas Karintou](../assets/diagrama-conceptual-karintou.png)
+
 DUEÑA KARINTOU → VENDE PRODUCTO → VENDEDOR → VENDE PRODUCTO → CLIENTE
 
 Entidades:
