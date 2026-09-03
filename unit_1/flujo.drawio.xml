@@ -59,26 +59,5 @@
       <mxGeometry relative="1" as="geometry" />
     </mxCell>
 
-    <!-- Conexiones -->
-    <mxCell id="e1" edge="1" parent="1" source="start" target="prod"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e2" edge="1" parent="1" source="prod" target="stock"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e3" edge="1" parent="1" source="stock" target="dec1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    
-    <mxCell id="e4" value="Vendedor / Tienda" edge="1" parent="1" source="dec1" target="vendedor"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e5" edge="1" parent="1" source="vendedor" target="precio_m"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e6" edge="1" parent="1" source="precio_m" target="venta"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-    <mxCell id="e7" value="Cliente Final" edge="1" parent="1" source="dec1" target="cliente"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e8" edge="1" parent="1" source="cliente" target="precio_c"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e9" edge="1" parent="1" source="precio_c" target="venta"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-    <mxCell id="e10" edge="1" parent="1" source="venta" target="calc"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e11" edge="1" parent="1" source="calc" target="dec2"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-    <mxCell id="e12" value="Sí" edge="1" parent="1" source="dec2" target="alerta"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e13" value="No" edge="1" parent="1" source="dec2" target="normal"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-    <mxCell id="e14" edge="1" parent="1" source="alerta" target="end"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="e15" edge="1" parent="1" source="normal" target="end"><mxGeometry relative="1" as="geometry" /></mxCell>
   </root>
 </mxGraphModel>
