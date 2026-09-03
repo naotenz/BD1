@@ -1,42 +1,68 @@
-<mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff">
+<mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="#1e1e1e">
   <root>
     <mxCell id="0" />
     <mxCell id="1" parent="0" />
 
-    <!-- Entidad CLIENTE -->
-    <mxCell id="ent_cliente" value="CLIENTE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="100" y="200" width="140" height="60" as="geometry" />
+    <!-- ENTIDAD: PERSONA / CLIENTE -->
+    <mxCell id="e_persona" value="PERSONA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1F2937;strokeColor=#3B82F6;fontColor=#ffffff;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="500" y="160" width="130" height="50" as="geometry" />
     </mxCell>
 
-    <!-- Entidad VENTA -->
-    <mxCell id="ent_venta" value="VENTA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="400" y="200" width="140" height="60" as="geometry" />
+    <!-- Atributos de PERSONA -->
+    <mxCell id="a_id_p" value="ID_Persona" style="ellipse;whiteSpace=wrap;html=1;fillColor=#14532D;strokeColor=#22C55E;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="680" y="100" width="90" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="a_nom" value="Nombre" style="ellipse;whiteSpace=wrap;html=1;fillColor=#14532D;strokeColor=#22C55E;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="690" y="180" width="80" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="a_ape" value="Apellido" style="ellipse;whiteSpace=wrap;html=1;fillColor=#14532D;strokeColor=#22C55E;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="540" y="250" width="80" height="40" as="geometry" />
     </mxCell>
 
-    <!-- Entidad PRODUCTO -->
-    <mxCell id="ent_producto" value="PRODUCTO" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontStyle=1;" vertex="1" parent="1">
-      <mxGeometry x="700" y="200" width="140" height="60" as="geometry" />
+    <!-- RELACIÓN: COMPRA -->
+    <mxCell id="r_compra" value="COMPRA" style="rhombus;whiteSpace=wrap;html=1;fillColor=#78350F;strokeColor=#F59E0B;fontColor=#ffffff;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="380" y="320" width="100" height="70" as="geometry" />
     </mxCell>
 
-    <!-- Relación realiza -->
-    <mxCell id="rel_realiza" value="realiza" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;" vertex="1" parent="1">
-      <mxGeometry x="270" y="190" width="80" height="80" as="geometry" />
+    <!-- ENTIDAD: VENTA / DETALLE -->
+    <mxCell id="e_venta" value="VENTA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1F2937;strokeColor=#3B82F6;fontColor=#ffffff;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="365" y="480" width="130" height="50" as="geometry" />
     </mxCell>
 
-    <!-- Relación contiene -->
-    <mxCell id="rel_contiene" value="contiene" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;" vertex="1" parent="1">
-      <mxGeometry x="570" y="190" width="80" height="80" as="geometry" />
+    <!-- Atributos de VENTA -->
+    <mxCell id="a_id_v" value="ID_Venta" style="ellipse;whiteSpace=wrap;html=1;fillColor=#14532D;strokeColor=#22C55E;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="260" y="440" width="80" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="a_fec" value="Fecha" style="ellipse;whiteSpace=wrap;html=1;fillColor=#14532D;strokeColor=#22C55E;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="210" y="520" width="80" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="a_tot" value="Total" style="ellipse;whiteSpace=wrap;html=1;fillColor=#14532D;strokeColor=#22C55E;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="385" y="580" width="80" height="40" as="geometry" />
     </mxCell>
 
-    <!-- Conexiones con Cardinalidad -->
-    <mxCell id="c1" value="1" edge="1" parent="1" source="ent_cliente" target="rel_realiza"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="c2" value="N" edge="1" parent="1" source="rel_realiza" target="ent_venta"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="c3" value="M" edge="1" parent="1" source="ent_venta" target="rel_contiene"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="c4" value="N" edge="1" parent="1" source="rel_contiene" target="ent_producto"><mxGeometry relative="1" as="geometry" /></mxCell>
-
-    <!-- Notas explicativas -->
-    <mxCell id="nota_c" value="Incluye Vendedores, Tiendas y Clientes Directos" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#FFF8DC;strokeColor=#CCCCCC;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="80" y="290" width="180" height="50" as="geometry" />
+    <!-- ENTIDAD: GASTO -->
+    <mxCell id="e_gasto" value="GASTO" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1F2937;strokeColor=#3B82F6;fontColor=#ffffff;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="100" y="160" width="130" height="50" as="geometry" />
     </mxCell>
+
+    <!-- RELACIÓN: REGISTRA_GASTO -->
+    <mxCell id="r_gasto" value="REGISTRA_GASTO" style="rhombus;whiteSpace=wrap;html=1;fillColor=#78350F;strokeColor=#F59E0B;fontColor=#ffffff;fontStyle=1;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="280" y="150" width="120" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- CONEXIONES ENTIDADES CON ATRIBUTOS -->
+    <mxCell id="c1" edge="1" parent="1" source="e_persona" target="a_id_p"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c2" edge="1" parent="1" source="e_persona" target="a_nom"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c3" edge="1" parent="1" source="e_persona" target="a_ape"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c4" edge="1" parent="1" source="e_venta" target="a_id_v"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c5" edge="1" parent="1" source="e_venta" target="a_fec"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c6" edge="1" parent="1" source="e_venta" target="a_tot"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+    <!-- CONEXIONES DE RELACIONES Y CARDINALIDAD -->
+    <mxCell id="cr1" value="1" edge="1" parent="1" source="e_persona" target="r_compra"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="cr2" value="N" edge="1" parent="1" source="r_compra" target="e_venta"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="cr3" value="1" edge="1" parent="1" source="e_persona" target="r_gasto"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="cr4" value="N" edge="1" parent="1" source="r_gasto" target="e_gasto"><mxGeometry relative="1" as="geometry" /></mxCell>
+
   </root>
 </mxGraphModel>
