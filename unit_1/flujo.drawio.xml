@@ -3,61 +3,40 @@
     <mxCell id="0" />
     <mxCell id="1" parent="0" />
 
-    <!-- Tabla DUEÑA -->
-    <mxCell id="t_duena" value="DUEÑA&#10;----------------------------------&#10;+ id_duena : INT (PK)&#10;  nombre : VARCHAR(100)&#10;  telefono : VARCHAR(20)" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
-      <mxGeometry x="60" y="80" width="220" height="90" as="geometry" />
+    <!-- Entidad CLIENTE -->
+    <mxCell id="ent_cliente" value="CLIENTE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="100" y="200" width="140" height="60" as="geometry" />
     </mxCell>
 
-    <!-- Tabla PRODUCTO -->
-    <mxCell id="t_producto" value="PRODUCTO&#10;----------------------------------&#10;+ id_producto : INT (PK)&#10;  nombre : VARCHAR(100)&#10;  peso_gramos : DECIMAL(8,2)&#10;  costo_unidad : DECIMAL(8,2)&#10;  precio_venta : DECIMAL(8,2)&#10;  stock_disponible : INT" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#D5E8D4;strokeColor=#82B366;" vertex="1" parent="1">
-      <mxGeometry x="780" y="320" width="230" height="140" as="geometry" />
+    <!-- Entidad VENTA -->
+    <mxCell id="ent_venta" value="VENTA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="400" y="200" width="140" height="60" as="geometry" />
     </mxCell>
 
-    <!-- Tabla VENDEDOR -->
-    <mxCell id="t_vendedor" value="VENDEDOR&#10;----------------------------------&#10;+ id_vendedor : INT (PK)&#10;  nombre : VARCHAR(100)&#10;  telefono : VARCHAR(20)&#10;  direccion : VARCHAR(200)" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#E1D5E7;strokeColor=#9673A6;" vertex="1" parent="1">
-      <mxGeometry x="60" y="310" width="220" height="110" as="geometry" />
+    <!-- Entidad PRODUCTO -->
+    <mxCell id="ent_producto" value="PRODUCTO" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="700" y="200" width="140" height="60" as="geometry" />
     </mxCell>
 
-    <!-- Tabla CLIENTE -->
-    <mxCell id="t_cliente" value="CLIENTE&#10;----------------------------------&#10;+ id_cliente : INT (PK)&#10;  nombre : VARCHAR(100)&#10;  telefono : VARCHAR(20)" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFE6CC;strokeColor=#D79B00;" vertex="1" parent="1">
-      <mxGeometry x="60" y="500" width="220" height="90" as="geometry" />
+    <!-- Relación realiza -->
+    <mxCell id="rel_realiza" value="realiza" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="270" y="190" width="80" height="80" as="geometry" />
     </mxCell>
 
-    <!-- Tabla VENTA -->
-    <mxCell id="t_venta" value="VENTA&#10;----------------------------------&#10;+ id_venta : INT (PK)&#10;# id_duena : INT (FK)&#10;# id_vendedor : INT (FK NULL)&#10;# id_cliente : INT (FK NULL)&#10;  fecha_hora : DATETIME&#10;  monto_total : DECIMAL(10,2)&#10;  ganancia_calculada : DECIMAL(10,2)" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#FFF2CC;strokeColor=#D6B656;" vertex="1" parent="1">
-      <mxGeometry x="380" y="270" width="250" height="160" as="geometry" />
+    <!-- Relación contiene -->
+    <mxCell id="rel_contiene" value="contiene" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="570" y="190" width="80" height="80" as="geometry" />
     </mxCell>
 
-    <!-- Tabla DETALLE_VENTA -->
-    <mxCell id="t_detalle" value="DETALLE_VENTA&#10;----------------------------------&#10;+ id_detalle : INT (PK)&#10;# id_venta : INT (FK)&#10;# id_producto : INT (FK)&#10;  cantidad : INT&#10;  precio_unitario : DECIMAL(8,2)&#10;  subtotal : DECIMAL(10,2)" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#F8CECC;strokeColor=#B85450;" vertex="1" parent="1">
-      <mxGeometry x="780" y="80" width="230" height="140" as="geometry" />
-    </mxCell>
+    <!-- Conexiones con Cardinalidad -->
+    <mxCell id="c1" value="1" edge="1" parent="1" source="ent_cliente" target="rel_realiza"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c2" value="N" edge="1" parent="1" source="rel_realiza" target="ent_venta"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c3" value="M" edge="1" parent="1" source="ent_venta" target="rel_contiene"><mxGeometry relative="1" as="geometry" /></mxCell>
+    <mxCell id="c4" value="N" edge="1" parent="1" source="rel_contiene" target="ent_producto"><mxGeometry relative="1" as="geometry" /></mxCell>
 
-    <!-- Relaciones -->
-    <!-- DUEÑA -> VENTA (1:N) -->
-    <mxCell id="rel1" value="1 : N" edge="1" parent="1" source="t_duena" target="t_venta">
-      <mxGeometry relative="1" as="geometry" />
+    <!-- Notas explicativas -->
+    <mxCell id="nota_c" value="Incluye Vendedores, Tiendas y Clientes Directos" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#FFF8DC;strokeColor=#CCCCCC;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="80" y="290" width="180" height="50" as="geometry" />
     </mxCell>
-
-    <!-- VENDEDOR -> VENTA (0..1:N) -->
-    <mxCell id="rel2" value="0..1 : N" edge="1" parent="1" source="t_vendedor" target="t_venta">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-
-    <!-- CLIENTE -> VENTA (0..1:N) -->
-    <mxCell id="rel3" value="0..1 : N" edge="1" parent="1" source="t_cliente" target="t_venta">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-
-    <!-- VENTA -> DETALLE_VENTA (1:N) -->
-    <mxCell id="rel4" value="1 : N" edge="1" parent="1" source="t_venta" target="t_detalle">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-
-    <!-- PRODUCTO -> DETALLE_VENTA (1:N) -->
-    <mxCell id="rel5" value="1 : N" edge="1" parent="1" source="t_producto" target="t_detalle">
-      <mxGeometry relative="1" as="geometry" />
-    </mxCell>
-
   </root>
 </mxGraphModel>
