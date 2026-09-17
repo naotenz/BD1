@@ -63,26 +63,27 @@ El objetivo central de este sistema es **cruzar el costo real de materias primas
 
 ## 📐 Modelo Conceptual y Diagrama de Entidades
 
-El flujo del modelo conecta las salidas financieras (gastos de producción) con los ingresos reales generados por ventas directas:
-
-$$\text{Ganancia Neta} = \text{Ingresos por Ventas} - \text{Costo Total de Insumos}$$
-
-```mermaid
-graph LR
+📐 Modelo Conceptual y Diagrama de EntidadesEl flujo del modelo conecta las salidas financieras desglosadas (catalogo e ingredientes) con la fabricación y las entregas detalladas a la tienda cliente:$$\text{Ganancia Neta} = \text{Ingresos por Ventas} - \text{Costo Total de Insumos}$$graph LR
     %% Entidades principales
-    G["<b>GASTO_INGREDIENTES</b><br/>──────<br/>• id_gasto (PK)<br/>• fecha<br/>• detalle<br/>• monto_gastado"] 
-    P["<b>PRODUCCION</b><br/>──────<br/>• id_produccion (PK)<br/>• fecha<br/>• bolsitas_hechas"]
-    V["<b>VENTA_TIENDA</b><br/>──────<br/>• id_venta (PK)<br/>• fecha<br/>• bolsitas_vendidas<br/>• precio_unidad<br/>• monto_cobrado"]
+    I["<b>INGREDIENTE</b><br/>──────<br/>• ingrediente_id (PK)<br/>• nombre (UNIQUE)<br/>• unidad_medida"]
+    G["<b>GASTO_INGREDIENTE</b><br/>──────<br/>• gasto_id (PK)<br/>• ingrediente_id (FK)<br/>• fecha<br/>• cantidad (>0)<br/>• monto_gastado (>0)"] 
+    P["<b>PRODUCCION</b><br/>──────<br/>• produccion_id (PK)<br/>• fecha<br/>• medio_produccion<br/>• bolsitas_hechas"]
+    DV["<b>DETALLE_VENTA</b><br/>──────<br/>• detalle_id (PK)<br/>• venta_id (FK)<br/>• produccion_id (FK)<br/>• cantidad_entregada<br/>• precio_unitario (2.00)<br/>• subtotal"]
+    V["<b>VENTA_TIENDA</b><br/>──────<br/>• venta_id (PK)<br/>• fecha<br/>• medio_entrega<br/>• monto_total"]
 
-    %% Relaciones
+    %% Relaciones y Cardinalidades
+    I -- "1 : se clasifica en : N" --> G
     G -- "N : financia : 1" --> P
-    P -- "1 : se entrega en : N" --> V
+    P -- "1 : genera lote : N" --> DV
+    DV -- "N : incluye : 1" --> V
 
     %% Estilos de color
-    style G fill:#f8cecc,stroke:#b85450,stroke-width:2px,color:#000
-    style P fill:#ffe6cc,stroke:#d79b00,stroke-width:2px,color:#000
-    style V fill:#d5e8d4,stroke:#82b366,stroke-width:2px,color:#000
-```
+    style I fill:#f8cecc,stroke:#b85450,stroke-width:2px,color:#000
+    style G fill:#e1d5e7,stroke:#9673a6,stroke-width:2px,color:#000
+    style P fill:#d5e8d4,stroke:#82b366,stroke-width:2px,color:#000
+    style DV fill:#fff2cc,stroke:#d6b656,stroke-width:2px,color:#000
+    style V fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px,color:#000
+
 
 ---
 
