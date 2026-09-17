@@ -63,7 +63,12 @@ El objetivo central de este sistema es **cruzar el costo real de materias primas
 
 ## 📐 Modelo Conceptual y Diagrama de Entidades
 
-📐 Modelo Conceptual y Diagrama de EntidadesEl flujo del modelo conecta las salidas financieras desglosadas (catalogo e ingredientes) con la fabricación y las entregas detalladas a la tienda cliente:$$\text{Ganancia Neta} = \text{Ingresos por Ventas} - \text{Costo Total de Insumos}$$graph LR
+El flujo del modelo conecta las salidas financieras desglosadas (catalogo e ingredientes) con la fabricación y las entregas detalladas a la tienda cliente:
+
+$$\text{Ganancia Neta} = \text{Ingresos por Ventas} - \text{Costo Total de Insumos}$$
+
+```mermaid
+graph LR
     %% Entidades principales
     I["<b>INGREDIENTE</b><br/>──────<br/>• ingrediente_id (PK)<br/>• nombre (UNIQUE)<br/>• unidad_medida"]
     G["<b>GASTO_INGREDIENTE</b><br/>──────<br/>• gasto_id (PK)<br/>• ingrediente_id (FK)<br/>• fecha<br/>• cantidad (>0)<br/>• monto_gastado (>0)"] 
@@ -83,6 +88,17 @@ El objetivo central de este sistema es **cruzar el costo real de materias primas
     style P fill:#d5e8d4,stroke:#82b366,stroke-width:2px,color:#000
     style DV fill:#fff2cc,stroke:#d6b656,stroke-width:2px,color:#000
     style V fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px,color:#000
+```
+
+---
+
+### 📋 Restricciones e Integridad del Modelo
+
+* **`INGREDIENTE`**: Clave única (`UNIQUE`) en el nombre para evitar duplicar materias primas.
+* **`GASTO_INGREDIENTE`**: Restricción `CHECK (cantidad > 0 AND monto_gastado > 0)` para evitar registros nulos o negativos en compras.
+* **`PRODUCCION`**: Registra obligatoriamente el `medio_produccion` (ej. Artesanal / Manual) y valida que las bolsas sean `CHECK (bolsitas_hechas >= 0)`.
+* **`DETALLE_VENTA`**: Tabla intermedia que conecta la producción realizada con las ventas reales. Fija el precio unitario predeterminado en `2.00 Bs` y exige `CHECK (cantidad_entregada > 0)`.
+* **`VENTA_TIENDA`**: Agrupa el total de la entrega, registrando el `medio_entrega` (ej. Entrega directa en tienda) y el `monto_total`.
 
 
 ---
