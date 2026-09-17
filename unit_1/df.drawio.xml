@@ -1,0 +1,47 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Modelo Karinto B2B">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- CLIENTE_TIENDA -->
+        <mxCell id="cliente" value="CLIENTE_TIENDA&#10;&#10;+ cliente_id (PK)&#10;+ nombre_tienda&#10;+ nombre_contacto&#10;+ telefono" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="160" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- VENTA -->
+        <mxCell id="venta" value="VENTA&#10;&#10;+ venta_id (PK)&#10;+ cliente_id (FK)&#10;+ fecha&#10;+ total_venta" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="260" y="240" width="160" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- DETALLE_VENTA -->
+        <mxCell id="detalle" value="DETALLE_VENTA&#10;&#10;+ detalle_id (PK)&#10;+ venta_id (FK)&#10;+ producto_id (FK)&#10;+ cantidad&#10;+ subtotal" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="480" y="240" width="160" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- PRODUCTO -->
+        <mxCell id="producto" value="PRODUCTO&#10;&#10;+ producto_id (PK)&#10;+ nombre&#10;+ peso_gramos&#10;+ precio_bolsita&#10;+ stock_disponible" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="480" y="40" width="160" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- INSUMO -->
+        <mxCell id="insumo" value="INSUMO&#10;&#10;+ insumo_id (PK)&#10;+ nombre&#10;+ unidad_medida&#10;+ costo_unitario" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="260" y="40" width="160" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- COMPRA_INSUMO -->
+        <mxCell id="compra" value="COMPRA_INSUMO&#10;&#10;+ compra_id (PK)&#10;+ insumo_id (FK)&#10;+ fecha&#10;+ cantidad&#10;+ total_gasto" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="160" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Relaciones -->
+        <mxCell id="rel1" edge="1" parent="1" source="cliente" target="venta"><geometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rel2" edge="1" parent="1" source="venta" target="detalle"><geometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rel3" edge="1" parent="1" source="producto" target="detalle"><geometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rel4" edge="1" parent="1" source="insumo" target="compra"><geometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
