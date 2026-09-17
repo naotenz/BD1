@@ -1,100 +1,91 @@
-<mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="#ffffff">
-  <root>
-    <mxCell id="0" />
-    <mxCell id="1" parent="0" />
+<mxfile host="app.diagrams.net">
+  <diagram name="Base de Datos Conceptual - Karintou">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
 
-    <!-- ENTIDAD: DUEÑO KARINTOU -->
-    <mxCell id="e_duena" value="DUEÑO KARINTOU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=12;" vertex="1" parent="1">
-      <mxGeometry x="100" y="250" width="160" height="50" as="geometry" />
-    </mxCell>
-    <!-- Atributos Radial - DUEÑO -->
-    <mxCell id="a_d1" value="id_dueño (PK)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontStyle=4;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="30" y="180" width="90" height="35" as="geometry" />
-    </mxCell>
-    <mxCell id="a_d2" value="nombre" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="135" y="170" width="75" height="35" as="geometry" />
-    </mxCell>
-    <mxCell id="a_d3" value="telefono" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="40" y="320" width="75" height="35" as="geometry" />
-    </mxCell>
+        <!-- TÍTULO PRINCIPAL -->
+        <mxCell id="titulo" value="BASE DE DATOS CONCEPTUAL&#10;Negocio de Galletas Karintou" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="30" width="400" height="50" as="geometry" />
+        </mxCell>
 
-    <!-- ENTIDAD: VENDEDOR -->
-    <mxCell id="e_vendedor" value="VENDEDOR" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=12;" vertex="1" parent="1">
-      <mxGeometry x="460" y="250" width="160" height="50" as="geometry" />
-    </mxCell>
-    <!-- Atributos Radial - VENDEDOR -->
-    <mxCell id="a_v1" value="id_vendedor (PK)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontStyle=4;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="380" y="170" width="100" height="35" as="geometry" />
-    </mxCell>
-    <mxCell id="a_v2" value="nombre" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="500" y="170" width="75" height="35" as="geometry" />
-    </mxCell>
-    <mxCell id="a_v3" value="direccion" style="ellipse;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="500" y="320" width="75" height="35" as="geometry" />
-    </mxCell>
+        <!-- 1. ENTIDAD: GASTO_INGREDIENTES (Morado/Rosa claro) -->
+        <mxCell id="gasto" value="GASTO_INGREDIENTES&#10;&#10;id_gasto (PK)&#10;fecha&#10;detalle&#10;monto_gastado" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="170" height="110" as="geometry" />
+        </mxCell>
 
-    <!-- ENTIDAD: TIENDA -->
-    <mxCell id="e_tienda" value="TIENDA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=12;" vertex="1" parent="1">
-      <mxGeometry x="820" y="250" width="160" height="50" as="geometry" />
-    </mxCell>
-    <!-- Atributos Radial - TIENDA -->
-    <mxCell id="a_t1" value="id_tienda (PK)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontStyle=4;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="750" y="170" width="90" height="35" as="geometry" />
-    </mxCell>
-    <mxCell id="a_t2" value="nombre" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="860" y="170" width="75" height="35" as="geometry" />
-    </mxCell>
-    <mxCell id="a_t3" value="id_pueblo" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="860" y="320" width="75" height="35" as="geometry" />
-    </mxCell>
+        <!-- RELACIÓN 1: financia -->
+        <mxCell id="rel1" value="financia" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="165" width="80" height="60" as="geometry" />
+        </mxCell>
 
-    <!-- ENTIDAD: CLIENTES -->
-    <mxCell id="e_cliente" value="CLIENTES" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=12;" vertex="1" parent="1">
-      <mxGeometry x="1180" y="250" width="160" height="50" as="geometry" />
-    </mxCell>
-    <!-- Atributos Radial - CLIENTES -->
-    <mxCell id="a_c1" value="id_cliente (PK)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontStyle=4;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="1120" y="170" width="90" height="35" as="geometry" />
-    </mxCell>
-    <mxCell id="a_c2" value="nombre" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=10;" vertex="1" parent="1">
-      <mxGeometry x="1230" y="170" width="75" height="35" as="geometry" />
-    </mxCell>
+        <!-- NOTA PUNTEADA GASTO -->
+        <mxCell id="nota_gasto" value="Registra la compra de materias primas e insumos a precios actuales." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#666666;dashed=1;fillColor=#ffffff;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="290" width="170" height="60" as="geometry" />
+        </mxCell>
 
-    <!-- RELACIONES (ROMBOS) -->
-    <mxCell id="r1" value="vende a" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="300" y="245" width="100" height="60" as="geometry" />
-    </mxCell>
-    <mxCell id="r2" value="suministra a" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="660" y="245" width="110" height="60" as="geometry" />
-    </mxCell>
-    <mxCell id="r3" value="vende a" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontStyle=1;fontSize=11;" vertex="1" parent="1">
-      <mxGeometry x="1020" y="245" width="100" height="60" as="geometry" />
-    </mxCell>
+        <!-- 2. ENTIDAD: PRODUCCION (Verde claro) -->
+        <mxCell id="produccion" value="PRODUCCION&#10;&#10;id_produccion (PK)&#10;fecha&#10;bolsitas_hechas" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="390" y="140" width="170" height="110" as="geometry" />
+        </mxCell>
 
-    <!-- LÍNEAS ATRIBUTOS RADIALES -->
-    <mxCell id="lad1" edge="1" parent="1" source="e_duena" target="a_d1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="lad2" edge="1" parent="1" source="e_duena" target="a_d2"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="lad3" edge="1" parent="1" source="e_duena" target="a_d3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- RELACIÓN 2: se entrega en -->
+        <mxCell id="rel2" value="se entrega en" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="600" y="165" width="90" height="60" as="geometry" />
+        </mxCell>
 
-    <mxCell id="lav1" edge="1" parent="1" source="e_vendedor" target="a_v1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="lav2" edge="1" parent="1" source="e_vendedor" target="a_v2"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="lav3" edge="1" parent="1" source="e_vendedor" target="a_v3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- NOTA PUNTEADA PRODUCCION -->
+        <mxCell id="nota_prod" value="Controla el volumen de bolsitas hechas para calcular el costo real por unidad." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#666666;dashed=1;fillColor=#ffffff;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="390" y="290" width="170" height="60" as="geometry" />
+        </mxCell>
 
-    <mxCell id="lat1" edge="1" parent="1" source="e_tienda" target="a_t1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="lat2" edge="1" parent="1" source="e_tienda" target="a_t2"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="lat3" edge="1" parent="1" source="e_tienda" target="a_t3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- 3. ENTIDAD: VENTA_TIENDA (Azul claro) -->
+        <mxCell id="venta" value="VENTA_TIENDA&#10;&#10;id_venta (PK)&#10;fecha&#10;bolsitas_vendidas&#10;precio_unidad&#10;monto_cobrado" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="730" y="140" width="170" height="120" as="geometry" />
+        </mxCell>
 
-    <mxCell id="lac1" edge="1" parent="1" source="e_cliente" target="a_c1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="lac2" edge="1" parent="1" source="e_cliente" target="a_c2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- NOTA PUNTEADA VENTA -->
+        <mxCell id="nota_venta" value="Registra los ingresos cobrados a la tienda cliente por entregar las bolsitas." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#666666;dashed=1;fillColor=#ffffff;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="730" y="290" width="170" height="60" as="geometry" />
+        </mxCell>
 
-    <!-- CONEXIONES RELACIONES -->
-    <mxCell id="cr1" value="1" edge="1" parent="1" source="e_duena" target="r1"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="cr2" value="N" edge="1" parent="1" source="r1" target="e_vendedor"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- LÍNEAS DE CONEXIÓN ENTRE ENTIDADES -->
+        <mxCell id="c1" edge="1" parent="1" source="gasto" target="rel1"><geometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c2" edge="1" parent="1" source="rel1" target="produccion"><geometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c3" edge="1" parent="1" source="produccion" target="rel2"><geometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c4" edge="1" parent="1" source="rel2" target="venta"><geometry relative="1" as="geometry" /></mxCell>
 
-    <mxCell id="cr3" value="1" edge="1" parent="1" source="e_vendedor" target="r2"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="cr4" value="N" edge="1" parent="1" source="r2" target="e_tienda"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <!-- CARDINALIDADES -->
+        <mxCell id="card1" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="170" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="card2" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="170" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="card3" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="170" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="card4" value="N" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="170" width="30" height="30" as="geometry" />
+        </mxCell>
 
-    <mxCell id="cr5" value="1" edge="1" parent="1" source="e_tienda" target="r3"><mxGeometry relative="1" as="geometry" /></mxCell>
-    <mxCell id="cr6" value="N" edge="1" parent="1" source="r3" target="e_cliente"><mxGeometry relative="1" as="geometry" /></mxCell>
-  </root>
-</mxGraphModel>
+        <!-- LÍNEAS PUNTEADAS HACIA LAS NOTAS -->
+        <mxCell id="p1" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="gasto" target="nota_gasto"><geometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p2" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="produccion" target="nota_prod"><geometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p3" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="venta" target="nota_venta"><geometry relative="1" as="geometry" /></mxCell>
+
+        <!-- RECUADRO INFERIOR 1: CARDINALIDADES -->
+        <mxCell id="box_card" value="CARDINALIDADES&#10;&#10;1  : Uno&#10;N  : Muchos&#10;(1:N) : Uno a Muchos" style="shape=swimlane;fontStyle=1;align=left;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="400" width="200" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- RECUADRO INFERIOR 2: RESUMEN DEL NEGOCIO -->
+        <mxCell id="box_resumen" value="RESUMEN DEL NEGOCIO&#10;&#10;Se registran las compras de materias primas para medir el costo de fabricación.&#10;La producción calcula las bolsitas obtenidas por lote para determinar el costo unitario.&#10;Se registran los ingresos por ventas entregadas a la tienda para comparar vs los gastos." style="shape=swimlane;fontStyle=1;align=left;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="400" width="610" height="110" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
