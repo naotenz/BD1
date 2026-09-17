@@ -25,24 +25,22 @@ Falta de control financiero e inventario: No existe un registro estructurado par
 
 Ausencia de comprobantes: Las ventas no emiten recibos debido a que el margen operativo se mantiene por debajo del umbral tributario obligatorio (1.500 Bs de ganancia); sin embargo, esto genera vacíos de información sobre qué productos se vendieron, a quién y mediante qué transacción.
 
-## Base de datos conceptual
 
-DUEÑA KARINTOU → VENDE PRODUCTO → VENDEDOR → VENDE PRODUCTO → CLIENTE
+### Base de datos conceptual
 
-### Entidades:
+COMPRA DE INSUMOS → PRODUCCIÓN (PRODUCTO) → VENTA A TIENDA (INGRESO)
 
-- <u>DUEÑA</u>
-- <u>PRODUCTO</u>
-- <u>VENDEDOR</u>
-- <u>CLIENTE</u>
-- <u>VENTA</u>
+#### Entidades:
 
-### Atributos
+* **GASTO_INGREDIENTES:** Registra las compras de materias primas e insumos (harina, azúcar, aceite, bolsas) para medir el costo de producción actual frente al aumento de precios.
+* **PRODUCCION:** Registra el volumen de bolsitas elaboradas por lote para determinar el costo unitario real de fabricación.
+* **VENTA_TIENDA:** Registra las entregas de producto y el dinero cobrado a la tienda cliente.
 
-- **Producto:** <u>precio por gramo</u>, <u>precio por bolsita</u> y <u>cantidad disponible</u>.
-- **Venta:** <u>fecha</u>, <u>cantidad</u>, <u>precio</u> y <u>ganancia</u>.
+#### Atributos:
 
-
+* **Gasto_Ingredientes:** fecha, detalle de materia prima y monto gastado.
+* **Produccion:** fecha y cantidad de bolsitas hechas.
+* **Venta_Tienda:** fecha, cantidad de bolsitas vendidas, precio unitario (2.00 Bs) y monto cobrado.
 
 
 
