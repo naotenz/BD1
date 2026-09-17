@@ -1,55 +1,51 @@
 <mxfile host="app.diagrams.net">
-  <diagram name="Modelo Karinto Con Cardinalidades">
-    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+  <diagram name="Modelo Karinto Abuela">
+    <mxGraphModel dx="800" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         
-        <!-- COMPRA_INSUMO -->
-        <mxCell id="compra" value="COMPRA_INSUMO&#10;&#10;+ compra_id (PK)&#10;+ nombre_insumo&#10;+ costo_total&#10;+ fecha" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="40" y="80" width="160" height="110" as="geometry" />
+        <!-- GASTO_INGREDIENTES (SALIDAS) -->
+        <mxCell id="gasto" value="GASTO_INGREDIENTES&#10;&#10;+ gasto_id (PK)&#10;+ fecha&#10;+ detalle&#10;+ monto_gastado" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="180" height="110" as="geometry" />
         </mxCell>
 
-        <!-- PRODUCTO (CENTRO) -->
-        <mxCell id="producto" value="PRODUCTO&#10;&#10;+ producto_id (PK)&#10;+ nombre&#10;+ peso_gramos&#10;+ precio_unidad&#10;+ stock_actual" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="280" y="80" width="160" height="120" as="geometry" />
+        <!-- PRODUCCION (CENTRO / CONTROL) -->
+        <mxCell id="produccion" value="PRODUCCION&#10;&#10;+ produccion_id (PK)&#10;+ fecha&#10;+ bolsitas_hechas" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="100" width="170" height="90" as="geometry" />
         </mxCell>
 
-        <!-- TIENDA -->
-        <mxCell id="tienda" value="TIENDA (CLIENTE)&#10;&#10;+ tienda_id (PK)&#10;+ nombre_tienda&#10;+ encargado&#10;+ telefono" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="540" y="80" width="160" height="110" as="geometry" />
+        <!-- VENTA_TIENDA (ENTRADAS) -->
+        <mxCell id="venta" value="VENTA_TIENDA&#10;&#10;+ venta_id (PK)&#10;+ fecha&#10;+ bolsitas_vendidas&#10;+ precio_unidad (2.00)&#10;+ monto_cobrado" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="570" y="100" width="180" height="120" as="geometry" />
         </mxCell>
 
-        <!-- VENTA_TIENDA -->
-        <mxCell id="venta" value="VENTA_TIENDA&#10;&#10;+ venta_id (PK)&#10;+ tienda_id (FK)&#10;+ producto_id (FK)&#10;+ cantidad_bolsitas&#10;+ monto_total&#10;+ fecha" style="shape=swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;subPerRow=1;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="400" y="270" width="170" height="130" as="geometry" />
-        </mxCell>
-
-        <!-- RELACIONES CON FLECHAS Y CARDINALIDAD -->
-
-        <!-- Relación Insumo a Producto (Producción) -->
-        <mxCell id="rel_insumo_prod" value="sirve para&#10;(1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;startArrow=oval;startFill=1;" edge="1" parent="1" source="compra" target="producto">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Relación Producto a Venta -->
-        <mxCell id="rel_prod_venta" value="se vende en&#10;(1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;endArrow=classic;startArrow=oval;startFill=1;" edge="1" parent="1" source="producto" target="venta">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="360" y="230" />
-              <mxPoint x="443" y="230" />
-            </Array>
+        <!-- RELACIÓN: GASTO -> PRODUCCION -->
+        <mxCell id="rel_gasto_prod" value="financia" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gasto" target="produccion">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="155" as="sourcePoint" />
+            <mxPoint x="320" y="155" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="lbl_gasto_1" value="N" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_gasto_prod">
+          <mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint x="5" y="-2" as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_prod_1" value="1" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_gasto_prod">
+          <mxGeometry x="0.8" relative="1" as="geometry"><mxPoint x="-5" y="-2" as="offset" /></mxGeometry>
+        </mxCell>
 
-        <!-- Relación Tienda a Venta -->
-        <mxCell id="rel_tienda_venta" value="realiza&#10;(1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;endArrow=classic;startArrow=oval;startFill=1;" edge="1" parent="1" source="tienda" target="venta">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="620" y="230" />
-              <mxPoint x="528" y="230" />
-            </Array>
+        <!-- RELACIÓN: PRODUCCION -> VENTA -->
+        <mxCell id="rel_prod_venta" value="se entrega en" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="produccion" target="venta">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="145" as="sourcePoint" />
+            <mxPoint x="570" y="145" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_prod_n" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_prod_venta">
+          <mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint x="5" y="-2" as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_venta_1" value="N" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="rel_prod_venta">
+          <mxGeometry x="0.8" relative="1" as="geometry"><mxPoint x="-5" y="-2" as="offset" /></mxGeometry>
         </mxCell>
 
       </root>
