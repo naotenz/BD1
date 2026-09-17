@@ -47,6 +47,11 @@ COMPRA DE INSUMOS → PRODUCCIÓN (PRODUCTO) → VENTA A TIENDA (INGRESO)
 
 
 
+![Base de datos conceptual del negocio de galletas Karintou](../assets/img/diseñoconceptual.jpeg)
+
+
+
+
 
 
 
