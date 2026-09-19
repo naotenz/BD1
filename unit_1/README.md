@@ -143,6 +143,22 @@ CREATE TABLE Venta_Tienda (
     precio_unidad DECIMAL(6, 2) DEFAULT 2.00,
     monto_cobrado DECIMAL(10, 2) NOT NULL
 );
+
+-- 5. Detalle de productos entregados en cada venta
+CREATE TABLE Detalle_Venta (
+    detalle_id INT PRIMARY KEY AUTO_INCREMENT,
+    venta_id INT NOT NULL,
+    produccion_id INT NOT NULL,
+    cantidad_entregada INT NOT NULL,
+    precio_unitario DECIMAL(6, 2) NOT NULL DEFAULT 2.00,
+    subtotal DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT fk_detalle_venta
+        FOREIGN KEY (venta_id) REFERENCES Venta_Tienda(venta_id),
+    CONSTRAINT fk_detalle_produccion
+        FOREIGN KEY (produccion_id) REFERENCES Produccion(produccion_id),
+    CONSTRAINT chk_detalle_venta_positivo
+        CHECK (cantidad_entregada > 0 AND precio_unitario > 0 AND subtotal > 0)
+);
 ```
 
 ---
