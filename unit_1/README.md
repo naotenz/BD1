@@ -108,22 +108,34 @@ graph LR
 Script de creación de tablas para MySQL / PostgreSQL:
 
 ```sql
--- 1. Gastos de Materia Prima e Insumos (Salidas)
-CREATE TABLE Gasto_Ingredientes (
-    gasto_id INT PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE NOT NULL,
-    detalle VARCHAR(100) NOT NULL,
-    monto_gastado DECIMAL(10, 2) NOT NULL
+-- 1. Catalogo de Ingredientes y Materias Primas
+CREATE TABLE Ingrediente (
+    ingrediente_id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL UNIQUE,
+    unidad_medida VARCHAR(30) NOT NULL
 );
 
--- 2. Registro de Lote de Producción (Control de Inventario Fabricado)
+-- 2. Gastos de Materia Prima e Insumos (Salidas)
+CREATE TABLE Gasto_Ingredientes (
+    gasto_id INT PRIMARY KEY AUTO_INCREMENT,
+    ingrediente_id INT NOT NULL,
+    fecha DATE NOT NULL,
+    cantidad DECIMAL(10, 2) NOT NULL,
+    monto_gastado DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT fk_gasto_ingrediente
+        FOREIGN KEY (ingrediente_id) REFERENCES Ingrediente(ingrediente_id),
+    CONSTRAINT chk_gasto_positivo
+        CHECK (cantidad > 0 AND monto_gastado > 0)
+);
+
+-- 3. Registro de Lote de Producción (Control de Inventario Fabricado)
 CREATE TABLE Produccion (
     produccion_id INT PRIMARY KEY AUTO_INCREMENT,
     fecha DATE NOT NULL,
     bolsitas_hechas INT NOT NULL
 );
 
--- 3. Registro de Ventas Realizadas a Tiendas (Entradas)
+-- 4. Registro de Ventas Realizadas a Tiendas (Entradas)
 CREATE TABLE Venta_Tienda (
     venta_id INT PRIMARY KEY AUTO_INCREMENT,
     fecha DATE NOT NULL,
