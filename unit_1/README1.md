@@ -72,6 +72,175 @@ La cantidad de ingredientes corresponde a **DETALLE_PRODUCCION**, porque represe
 
 
 
+-- ============================================================
+-- PROYECTO BASE DE DATOS 1: SISTEMA KARINTO
+-- ESQUEMA RELACIONAL Y CONSULTAS DE DEMOSTRACIÓN
+-- ============================================================
+
+CREATE DATABASE IF NOT EXISTS karinto_db;
+USE karinto_db;
+
+-- ------------------------------------------------------------
+-- 1. ESTRUCTURA DE TABLAS (DDL)
+-- ------------------------------------------------------------
+
+-- Catálogos (Entidades Fuertes)
+CREATE TABLE INGREDIENTE (
+    ingrediente_id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL UNIQUE,
+    unidad_medida VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE PROVEEDOR (
+    proveedor_id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    contacto VARCHAR(100)
+);
+
+CREATE TABLE PRODUCTO (
+    producto_id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    gramos_por_bolsa DECIMAL(10,2) NOT NULL,
+    precio_referencia DECIMAL(10,2) NOT NULL DEFAULT 2.00
+);
+
+CREATE TABLE TIENDA (
+    tienda_id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    contacto VARCHAR(100)
+);
+
+-- Transacciones e Intersecciones
+CREATE TABLE COMPRA_INSUMO (
+    compra_id INT AUTO_INCREMENT PRIMARY KEY,
+    proveedor_id INT NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (proveedor_id) REFERENCES PROVEEDOR(proveedor_id) ON DELETE RESTRICT
+);
+
+CREATE TABLE DETALLE_COMPRA (
+    compra_id INT NOT NULL,
+    ingrediente_id INT NOT NULL,
+    cantidad_comprada DECIMAL(10,2) NOT NULL,
+    costo_unitario DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (compra_id, ingrediente_id),
+    FOREIGN KEY (compra_id) REFERENCES COMPRA_INSUMO(compra_id) ON DELETE CASCADE,
+    FOREIGN KEY (ingrediente_id) REFERENCES INGREDIENTE(ingrediente_id) ON DELETE RESTRICT
+);
+
+CREATE TABLE PRODUCCION (
+    produccion_id INT AUTO_INCREMENT PRIMARY KEY,
+    producto_id INT NOT NULL,
+    fecha DATE NOT NULL,
+    cantidad_producida INT NOT NULL,
+    FOREIGN KEY (producto_id) REFERENCES PRODUCTO(producto_id) ON DELETE RESTRICT
+);
+
+CREATE TABLE DETALLE_PRODUCCION (
+    produccion_id INT NOT NULL,
+    ingrediente_id INT NOT NULL,
+    cantidad_utilizada DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (produccion_id, ingrediente_id),
+    FOREIGN KEY (produccion_id) REFERENCES PRODUCCION(produccion_id) ON DELETE CASCADE,
+    FOREIGN KEY (ingrediente_id) REFERENCES INGREDIENTE(ingrediente_id) ON DELETE RESTRICT
+);
+
+CREATE TABLE VENTA_TIENDA (
+    venta_id INT AUTO_INCREMENT PRIMARY KEY,
+    tienda_id INT NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (tienda_id) REFERENCES TIENDA(tienda_id) ON DELETE RESTRICT
+);
+
+CREATE TABLE DETALLE_VENTA (
+    venta_id INT NOT NULL,
+    producto_id INT NOT NULL,
+    cantidad_vendida INT NOT NULL,
+    precio_unitario DECIMAL(10,2) DEFAULT 2.00 NOT NULL,
+    PRIMARY KEY (venta_id, producto_id),
+    FOREIGN KEY (venta_id) REFERENCES VENTA_TIENDA(venta_id) ON DELETE CASCADE,
+    FOREIGN KEY (producto_id) REFERENCES PRODUCTO(producto_id) ON DELETE RESTRICT
+);
+
+-- ------------------------------------------------------------
+-- 2. DATOS DE PRUEBA (DML)
+-- ------------------------------------------------------------
+
+INSERT INTO INGREDIENTE (nombre, unidad_medida) VALUES 
+('Harina de Trigo', 'kg'),
+('Azúcar', 'kg'),
+('Aceite Vegetal', 'L'),
+('Bolsas Plásticas', 'Unidades');
+
+INSERT INTO PROVEEDOR (nombre, contacto) VALUES 
+('Distribuidora Los Andes', '70012345'),
+('Empaques S.R.L.', NULL);
+
+INSERT INTO PRODUCTO (nombre, gramos_por_bolsa, precio_referencia) VALUES 
+('Bolsita Karinto Tradicional', 20.00, 2.00);
+
+INSERT INTO TIENDA (nombre, contacto) VALUES 
+('Donaji', '71000001'),
+('Abarrotes Don Pedro', '72000002');
+
+INSERT INTO COMPRA_INSUMO (proveedor_id, fecha) VALUES (1, '2026-10-10 09:00:00');
+
+INSERT INTO DETALLE_COMPRA (compra_id, ingrediente_id, cantidad_comprada, costo_unitario) VALUES 
+(1, 1, 10.00, 5.00),
+(1, 2, 30.00, 6.50),
+(1, 3, 2.00, 12.00);
+
+INSERT INTO PRODUCCION (producto_id, fecha, cantidad_producida) VALUES (1, '2026-10-12', 100);
+
+INSERT INTO DETALLE_PRODUCCION (produccion_id, ingrediente_id, cantidad_utilizada) VALUES 
+(1, 1, 2.00),
+(1, 2, 1.50),
+(1, 3, 0.50);
+
+INSERT INTO VENTA_TIENDA (tienda_id, fecha) VALUES (1, '2026-10-14 15:30:00');
+
+INSERT INTO DETALLE_VENTA (venta_id, producto_id, cantidad_vendida, precio_unitario) VALUES 
+(1, 1, 50, 2.00);
+
+-- ------------------------------------------------------------
+-- 3. CONSULTAS BÁSICAS DE EJEMPLO
+-- ------------------------------------------------------------
+
+-- 1. Todos los registros
+SELECT * FROM INGREDIENTE;
+
+-- 2. Columnas específicas
+SELECT ingrediente_id, nombre, unidad_medida FROM INGREDIENTE;
+
+-- 3. Con alias
+SELECT ingrediente_id AS "Código Insumo", CONCAT(nombre, ' (', unidad_medida, ')') AS "Descripción Completa"
+FROM INGREDIENTE;
+
+-- 4. Con filtro simple
+SELECT * FROM PRODUCCION WHERE producto_id = 1;
+
+-- 5. Con múltiples condiciones
+SELECT * FROM DETALLE_COMPRA
+WHERE cantidad_comprada >= 10 AND costo_unitario <= 6.50;
+
+-- 6. LIKE - búsqueda por patrón
+SELECT * FROM INGREDIENTE WHERE nombre LIKE 'Har%';
+SELECT * FROM INGREDIENTE WHERE nombre LIKE '%a%';
+
+-- 7. BETWEEN - rango de valores
+SELECT * FROM DETALLE_VENTA WHERE precio_unitario BETWEEN 1.50 AND 2.00;
+
+-- 8. IN - lista de valores
+SELECT * FROM DETALLE_COMPRA WHERE ingrediente_id IN (1, 2, 3);
+
+-- 9. IS NULL / IS NOT NULL
+SELECT * FROM PROVEEDOR WHERE contacto IS NULL;
+
+-- 10. ORDER BY
+SELECT * FROM INGREDIENTE ORDER BY nombre ASC;
+
+-- 11. LIMIT
+SELECT * FROM DETALLE_VENTA ORDER BY cantidad_vendida DESC LIMIT 5;
 
 
 

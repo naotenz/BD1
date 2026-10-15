@@ -141,3 +141,5 @@ El importe de cada línea de venta se calcula como `cantidad_vendida × precio_u
 
 * `README.md` — Contexto del proyecto, diagrama y modelo relacional normalizado.
 * `README1.md` — Información de la entrevista y explicación del modelo propuesto.
+
+
