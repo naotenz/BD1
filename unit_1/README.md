@@ -151,19 +151,45 @@ El importe de cada línea de venta se calcula como `cantidad_vendida × precio_u
 
 
 
+# 📁 Estructura del Repositorio
+
+* `README.md` — Contexto del proyecto, diagrama y modelo relacional normalizado.
+* `README1.md` — Información de la entrevista y explicación del modelo propuesto.
+
+---
 
 
+# 🗄️ Implementación Física y Consultas de Control: Base de Datos Karinto
+
+## 📖 Introducción Técnica: ¿Qué es SQL y por qué se utiliza?
+
+**SQL (Structured Query Language)** es el lenguaje estándar para la gestión y manipulación de bases de datos relacionales. En este proyecto, la implementación física en SQL cumple las siguientes funciones fundamentales:
+
+* **Garantizar la Integridad de los Datos (DDL):** Permite definir la estructura relacional en **Tercera Forma Normal (3FN)**, aplicando restricciones de clave primaria (`PRIMARY KEY`), clave foránea (`FOREIGN KEY`) e integridad referencial (`ON DELETE RESTRICT/CASCADE`). Esto evita redundancias y previene el registro de datos desvinculados o inconsistentes.
+* **Simular la Operativa Real (DML):** Facilita la carga de datos de prueba para registrar las transacciones reales del taller artesanal: adquisición de insumos, procesos de transformación/producción y ventas a distribuidores.
+* **Soportar la Toma de Decisiones (DQL):** Proporciona la capacidad de ejecutar consultas analíticas complejas que calculan costos de producción, márgenes de ganancia e impacto de la inflación de materia prima en tiempo real.
+
+---
+
+## 📌 Documentación de la Estructura de la Base de Datos
+
+El script se divide en tres secciones ejecutables:
+
+1. **Estructura DDL (Data Definition Language):** Creación de la base de datos `karinto_db` y sus 10 tablas relacionales.
+2. **Población DML (Data Manipulation Language):** Inserción de datos iniciales para catálogos, registros de compra, lotes de producción y ventas a clientes.
+3. **Consultas DQL (Data Query Language):** Consultas de verificación y extracción de información clave.
+
+```sql
 -- ============================================================
--- PROYECTO BASE DE DATOS 1: SISTEMA KARINTO
--- ESQUEMA RELACIONAL Y CONSULTAS DE DEMOSTRACIÓN
+-- BASE DE DATOS: KARINTO (SISTEMA DE CONTROL Y RENTABILIDAD)
 -- ============================================================
 
 CREATE DATABASE IF NOT EXISTS karinto_db;
 USE karinto_db;
 
--- ------------------------------------------------------------
+-- ============================================================
 -- 1. ESTRUCTURA DE TABLAS (DDL)
--- ------------------------------------------------------------
+-- ============================================================
 
 -- Catálogos (Entidades Fuertes)
 CREATE TABLE INGREDIENTE (
@@ -243,9 +269,9 @@ CREATE TABLE DETALLE_VENTA (
     FOREIGN KEY (producto_id) REFERENCES PRODUCTO(producto_id) ON DELETE RESTRICT
 );
 
--- ------------------------------------------------------------
+-- ============================================================
 -- 2. DATOS DE PRUEBA (DML)
--- ------------------------------------------------------------
+-- ============================================================
 
 INSERT INTO INGREDIENTE (nombre, unidad_medida) VALUES 
 ('Harina de Trigo', 'kg'),
@@ -282,10 +308,18 @@ INSERT INTO VENTA_TIENDA (tienda_id, fecha) VALUES (1, '2026-10-14 15:30:00');
 
 INSERT INTO DETALLE_VENTA (venta_id, producto_id, cantidad_vendida, precio_unitario) VALUES 
 (1, 1, 50, 2.00);
+```
 
--- ------------------------------------------------------------
--- 3. CONSULTAS BÁSICAS DE EJEMPLO
--- ------------------------------------------------------------
+---
+
+## 💡 Utilidad Operativa de las Consultas (Toma de Decisiones)
+
+> **Nota para la presentación:** Estas consultas (`DQL`) no son solo filtros de inspección, sino herramientas analíticas clave para la gestión del negocio. Permiten detectar variaciones en los costos al comparar el precio histórico de compra de los ingredientes contra el precio de venta fijo del producto final ($2.00\text{ Bs}$). De esta manera, el sistema facilita la localización de desviaciones financieras y ayuda a tomar decisiones estratégicas en tiempo real, como renegociar con proveedores, optimizar la receta o evaluar un incremento en el precio de venta frente a la inflación.
+
+```sql
+-- ============================================================
+-- 3. CONSULTAS DE CONTROL Y VERIFICACIÓN (DQL)
+-- ============================================================
 
 -- 1. Todos los registros
 SELECT * FROM INGREDIENTE;
@@ -322,8 +356,4 @@ SELECT * FROM INGREDIENTE ORDER BY nombre ASC;
 
 -- 11. LIMIT
 SELECT * FROM DETALLE_VENTA ORDER BY cantidad_vendida DESC LIMIT 5;
-
-
-
-
-
+```
